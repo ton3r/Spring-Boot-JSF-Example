@@ -1,5 +1,6 @@
-package hello;
+package application.web;
 
+import application.service.TestService;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.CategoryAxis;
@@ -20,11 +21,11 @@ public class JsfController {
 	private String jsfTestString = "This string came from server side";
 
 	/**
-	 * This method demonstrates grabbing a vlue from the view scope and the
-	 * session scope.
+	 * This method demonstrates grabbing a vlue from the view application.configuration.jsf.scope and the
+	 * session application.configuration.jsf.scope.
 	 * 
 	 * Something I wanted to see to verify the same Spring context is managing
-	 * each scope.
+	 * each application.configuration.jsf.scope.
 	 */
 	public void doSomething() {
 		setJsfTestString(testService.getMessage() + " " + counter++);

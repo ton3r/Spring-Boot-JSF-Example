@@ -1,24 +1,40 @@
 Spring-Boot-JSF-Example
 =======================
 
-Looked around and saw on stack overflow that no one had a working example of JSF and Spring boot working together. So I added this example so that I could use it to answer some stack-overflow questions
+Fork of Zergleb's Spring Boot + JSF Integration
+
+==Changes==
+
+- Spring Security integration with Spring Security Tags
+- Directory structure
+- JSF Message resource bundle
+- H2 persistance with Console enabled for development purposes
+
+==Run==
 
 To run use 
 
 ```
-Windows:
-gradlew run 
-
-Other:
-sh gradlew run
+mvn spring-boot:run
 ```
 
-After that visit these 2 urls
+==Credentials==
 
-JSF Example [http://localhost:8080/test.xhtml](http://localhost:8080/test.xhtml)
+Admin: admin:12345
+User: usuario:12345
 
-and 
+==URLS===
 
-Spring MVC Greeting Service [http://localhost:8080/greeting](http://localhost:8080/greeting)
+[http://localhost:8080/greeting](http://localhost:8080/greeting) - Public Spring Service view
+
+[http://localhost:8080/login.xhtml](http://localhost:8080/login.xhtml) - Login page, defaults to this route
+
+[http://localhost:8080/admin.xhtml](http://localhost:8080/admin.xhtml) - Protected view for admin role
+
+[http://localhost:8080/test.xhtml](http://localhost:8080/test.xhtml) - Protected view for admin and user role
+
+[http://localhost:8080/console](http://localhost:8080/console) - H2 Console (Note: should only be available for development)
+
+==Note from original==
 
 There was a common belief that because JSF and Spring MVC were their own view technologies and that they could not be used together, but this is incorrect and is part of this example.

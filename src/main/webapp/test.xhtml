@@ -3,6 +3,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:sec="http://www.springframework.org/security/tags"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>User Page</title>
@@ -15,5 +16,16 @@
     <div width="100%">
         <p:chart type="line" model="#{jsfController.areaModel}" style="height:300px; width: 600px;" />
     </div>
+
+        <p:fieldset legend="Acciones">
+            <sec:authorize ifAllGranted="ROLE_ADMIN">
+            <p>
+                <p:link value="Admin" href="admin.xhtml" />
+            </p>
+            </sec:authorize>
+            <p>
+                <p:link value="Log out" href="/logout" />
+            </p>
+        </p:fieldset>
     </h:body>
 </html>

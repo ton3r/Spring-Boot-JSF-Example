@@ -1,4 +1,4 @@
-package scope;
+package application.configuration.jsf;
 
 import java.util.Map;
 
@@ -8,10 +8,10 @@ import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.config.Scope;
 
 /**
- * This uses the FacesContext view map as a datastore for a scope in the Spring
+ * This uses the FacesContext view map as a datastore for a application.configuration.jsf.scope in the Spring
  * Framework
  * 
- * More simply this is a view scope implementation that works in spring
+ * More simply this is a view application.configuration.jsf.scope implementation that works in spring
  * 
  * @author Optimus Prime(From the primefaces
  *         team)(http://blog.primefaces.org/?p=702)
