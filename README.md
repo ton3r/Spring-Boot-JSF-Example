@@ -26,7 +26,7 @@ User: usuario:12345
 
 ##URLS##
 
-[http://localhost:8080/greeting](http://localhost:8080/greeting) - Public Spring Service view
+[http://localhost:8080/greeting](http://localhost:8080/greeting) - Public Spring MVC view
 
 [http://localhost:8080/login.xhtml](http://localhost:8080/login.xhtml) - Login page, defaults to this route
 
@@ -34,7 +34,7 @@ User: usuario:12345
 
 [http://localhost:8080/test.xhtml](http://localhost:8080/test.xhtml) - Protected view for admin and user role
 
-[http://localhost:8080/console](http://localhost:8080/console) - H2 Console (Note: should only be available for development)
+[http://localhost:8080/console](http://localhost:8080/console) - H2 Console (Note: should only be available for development, tip: use profile feature)
 
 ##Note from original##
 
