@@ -5,6 +5,7 @@ Fork of Zergleb's Spring Boot + JSF Integration
 
 ##Changes##
 
+- Maven based project
 - Spring Security integration with Spring Security Tags
 - Directory structure
 - JSF Message resource bundle
