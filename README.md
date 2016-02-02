@@ -8,7 +8,7 @@ Fork of Zergleb's Spring Boot + JSF Integration
 - Spring Security integration with Spring Security Tags
 - Directory structure
 - JSF Message resource bundle
-- H2 persistance with Console enabled for development purposes
+- H2 persistence with Console enabled for development purposes
 
 ##Run##
 
