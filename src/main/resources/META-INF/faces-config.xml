@@ -7,6 +7,5 @@
                 <var>entitiesLabels</var>
             </resource-bundle>
 
-            <message-bundle>customMessages</message-bundle>
         </application>
 </faces-config>
