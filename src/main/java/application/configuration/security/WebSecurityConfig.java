@@ -1,16 +1,19 @@
 package application.configuration.security;
 
-import application.repository.SystemUserRepository;
+import application.configuration.jsf.JSFRedirectStrategy;
 import application.service.SystemUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.session.SessionManagementFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
@@ -22,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 
     @Autowired
-    SystemUserDetailsService systemUserRepository;
+    SystemUserDetailsService systemUserService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -47,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(systemUserRepository).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(systemUserService).passwordEncoder(passwordEncoder());
     }
 
 
@@ -55,6 +58,35 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     public PasswordEncoder passwordEncoder(){
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         return encoder;
+    }
+
+    /**
+     * We want to ignore all public resource files from the security filter, otherwise it will deny cache on the client side
+     * @param web web security object
+     * @throws Exception
+     */
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/resources/**", "/javax.faces.resource/**");
+    }
+
+    @Bean
+    public HttpSessionSecurityContextRepository httpSessionSecurityContextRepository(){
+        return new HttpSessionSecurityContextRepository();
+    }
+
+    /**
+     * In case session expires, JSF must AJAX-redirect to the login page
+     * @return session management filter
+     */
+    @Bean
+    public SessionManagementFilter sessionManagementFilter(){
+        SessionManagementFilter filter = new SessionManagementFilter(httpSessionSecurityContextRepository());
+        JSFRedirectStrategy strategy = new JSFRedirectStrategy();
+        strategy.setInvalidSessionUrl("/login.xhtml");
+
+        filter.setInvalidSessionStrategy(strategy);
+        return filter;
     }
 
 }

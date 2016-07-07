@@ -8,6 +8,7 @@ import javax.servlet.DispatcherType;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
+import org.primefaces.webapp.filter.FileUploadFilter;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.boot.context.embedded.ServletContextInitializer;
 import org.springframework.boot.context.embedded.ServletListenerRegistrationBean;
@@ -107,9 +108,20 @@ public class JSFConfiguration {
                         "javax.faces.FACELETS_LIBRARIES",
                         "/WEB-INF/springsecurity.taglib.xml");
                 servletContext.setInitParameter("javax.faces.FACELETS_LIBRARIES", "/WEB-INF/springsecurity.taglib.xml");
+
                 EnumSet<DispatcherType> tiposDispatcher = EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD);
                 servletContext.addFilter("securityFilter",
                         new DelegatingFilterProxy("springSecurityFilterChain")).addMappingForUrlPatterns(tiposDispatcher, false, "/*");
+
+                //Configuración del filter upload de Primefaces
+                servletContext.setInitParameter("primefaces.UPLOADER", "commons");
+                servletContext.addFilter("PrimeFaces FileUpload Filter", new FileUploadFilter())
+                        .addMappingForServletNames(tiposDispatcher, false, "FacesServlet");
+
+                //ViewExpiredException filter register
+                servletContext.addFilter("errorHandlerFilter", new ViewExpiredExceptionFilter())
+                        .addMappingForUrlPatterns(tiposDispatcher,false, "/*");
+
             }
         };
     }

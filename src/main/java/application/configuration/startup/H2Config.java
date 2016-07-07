@@ -19,6 +19,7 @@ public class H2Config {
                 new WebServlet());
         registrationBean.addUrlMappings("/console/*");
 
+        //Uncomment the following to add remote access to the H2 Console
         //registrationBean.addInitParameter("webAllowOthers", "true");
 
         return registrationBean;
