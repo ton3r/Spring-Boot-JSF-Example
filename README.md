@@ -10,6 +10,7 @@ Fork of Zergleb's Spring Boot + JSF Integration
 - Directory structure
 - JSF Message resource bundle
 - H2 persistence with Console enabled for development purposes
+- Session and View expiration handlers
 
 ##Run##
 
