@@ -17,6 +17,18 @@ public class SystemUser {
     String password;
 
     String role;
+    
+    public SystemUser(){
+    	
+    }
+    
+    public SystemUser(Long id, String user, String password, String role){
+    	this.id = id;
+    	this.user = user;
+    	this.password = password;
+    	this.role = role;
+    }
+    
     /**
      * @return the id
      */
