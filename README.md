@@ -8,21 +8,25 @@ Fork of Zergleb's Spring Boot + JSF Integration, forked from cenobyte321/Spring-
 
 Build it with
 
-_mvn clean install spring-boot:repackage_
+```
+mvn clean install spring-boot:repackage
+```
 
 and try to execute it with
 
-_java -jar target/application-0.0.1-SNAPSHOT.war_
+```
+java -jar target/application-0.0.1-SNAPSHOT.war
+```
 
 You will get during startup an Exception like this :
 
+```
+2017-09-08 10:48:23.860  INFO 35369 --- [ost-startStop-1] j.e.resource.webcontainer.jsf.config     : Mojarra 2.2.7 ( 20140610-1547 https://svn.java.net/svn/mojarra~svn/tags/2.2.7@13362) für Kontext '' wird initialisiert.
 
-*2017-09-08 10:48:23.860  INFO 35369 --- [ost-startStop-1] j.e.resource.webcontainer.jsf.config     : Mojarra 2.2.7 ( 20140610-1547 https://svn.java.net/svn/mojarra~svn/tags/2.2.7@13362) für Kontext '' wird initialisiert.*
+2017-09-08 10:48:27.938 ERROR 35369 --- [ost-startStop-1] j.e.resource.webcontainer.jsf.config     : Critical error during deployment: 
 
-*2017-09-08 10:48:27.938 ERROR 35369 --- [ost-startStop-1] j.e.resource.webcontainer.jsf.config     : Critical error during deployment:* 
-
-*com.sun.faces.config.ConfigurationException: java.util.concurrent.ExecutionException: javax.faces.FacesException: java.io.FileNotFoundException: JAR entry META-INF/ not found in /var/folders/gj/...*
-
+com.sun.faces.config.ConfigurationException: java.util.concurrent.ExecutionException: javax.faces.FacesException: java.io.FileNotFoundException: JAR entry META-INF/ not found in /var/folders/gj/...
+```
 
 Changing spring-boot-parent version in pom to something lower 1.5.3.RELEASE it works fine.
 
@@ -30,9 +34,9 @@ Changing spring-boot-parent version in pom to something lower 1.5.3.RELEASE it w
 
 
 
-###Original Readme
+### Original Readme
 
-##Changes##
+## Changes
 
 - Maven based project
 - Spring Security integration with Spring Security Tags
@@ -41,7 +45,7 @@ Changing spring-boot-parent version in pom to something lower 1.5.3.RELEASE it w
 - H2 persistence with Console enabled for development purposes
 - Session and View expiration handling
 
-##Run##
+## Run
 
 To run use 
 
@@ -49,13 +53,13 @@ To run use
 mvn spring-boot:run
 ```
 
-##Credentials##
+## Credentials
 
 Admin: admin:12345
 
 User: usuario:12345
 
-##URLS##
+## URLS
 
 [http://localhost:8080/greeting](http://localhost:8080/greeting) - Public Spring MVC view
 
@@ -67,6 +71,6 @@ User: usuario:12345
 
 [http://localhost:8080/console](http://localhost:8080/console) - H2 Console (Note: should only be available for development, tip: use profile feature)
 
-##Note from original##
+## Note from original
 
 There was a common belief that because JSF and Spring MVC were their own view technologies and that they could not be used together, but this is incorrect and is part of this example.
