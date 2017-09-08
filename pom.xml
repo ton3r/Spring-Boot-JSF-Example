@@ -10,18 +10,20 @@
 
 	<name>application</name>
 	<description>Spring JSF Example with MAven</description>
-
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.1.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 	</properties>
+	
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.3.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+
 
 	<dependencies>
         <dependency>
@@ -115,11 +117,6 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>3.2.7.RELEASE</version>
 		</dependency>
-        <dependency>
-            <groupId>org.primefaces.extensions</groupId>
-            <artifactId>all-themes</artifactId>
-            <version>1.0.8</version>
-        </dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-io</artifactId>
