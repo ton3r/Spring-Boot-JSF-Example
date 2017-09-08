@@ -3,6 +3,9 @@ Spring-Boot-JSF-Example
 
 Fork of Zergleb's Spring Boot + JSF Integration, forked from cenobyte321/Spring-Boot-JSF-Example 
 
+# Problem get solved if you set <tomcat.version>8.5.11</tomcat.version to your pom.xml properties section. Then it runs also with Spring-Boot-1.5.6.RELEASE
+
+https://github.com/spring-projects/spring-boot/issues/10232
 
 # This is a demonstration that there is probably a _bug/error/feature/_ during the creation of an executable .war file with spring-boot-maven-plugin since Version >= 1.5.3.RELEASE
 
